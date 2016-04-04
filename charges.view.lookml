@@ -2,6 +2,7 @@
   sql_table_name: stripe.charges
   fields:
 
+## Dimensions
   - dimension: id
     primary_key: true
     type: string
@@ -63,7 +64,44 @@
     type: string
     sql: ${TABLE}.status
 
-  - measure: count
+## Measures
+
+  - measure: total_gross_amount
+    type: sum
+    sql: ${TABLE}.amount
+    value_format: '$#,##0.00'
+    
+  - measure: total_refunds
+    type: sum
+    sql: ${TABLE}.amount_refunded
+    value_format: '$#,##0.00'
+    
+  - measure: total_net_amount
+    type: number
+    sql: ${total_gross_amount} - ${total_refunds}
+    value_format: '$#,##0.00'
+
+  - measure: cumulative_gross
+    type: running_total
+    sql: ${total_gross_amount}
+    value_format: '$#,##0.00'
+    
+  - measure: cumulative_refunds
+    type: running_total
+    sql: ${total_refunds}
+    value_format: '$#,##0.00'
+
+  - measure: cumulative_net
+    type: running_total
+    sql: ${total_net_amount}
+    value_format: '$#,##0.00'
+
+  - measure: charge_count
     type: count
     drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
 
+  - measure: refund_count
+    type: count
+    drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
+    filters:
+      refunded: 'Yes'

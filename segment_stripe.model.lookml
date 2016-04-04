@@ -4,9 +4,17 @@
 - include: "*.dashboard.lookml"  # include all the dashboards
 
 - explore: accounts
+#- explore: calendar
 
-- explore: charges
+
+- explore: calendar
+  label: 'Charges'
   joins:
+    - join: charges
+      type: left_outer
+      relationship: one_to_many
+      sql_on:  ${calendar.cal_date_date} = ${charges.created_date} 
+      
     - join: customers
       type: left_outer 
       sql_on: ${charges.customer_id} = ${customers.id}
@@ -33,8 +41,14 @@
       relationship: many_to_one
 
 
-- explore: customers
+- explore: customer
+  from: calendar
+  label: 'Customers'
   joins:
+    - join: customers
+      type: left_outer
+      sql_on: ${customer.cal_date_date} = ${customers.created_date}
+      relationship: one_to_many
     - join: discounts
       type: left_outer 
       sql_on: ${customers.discount_id} = ${discounts.id}

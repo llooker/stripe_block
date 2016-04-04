@@ -2,6 +2,8 @@
   sql_table_name: stripe.invoices
   fields:
 
+## Dimensions
+
   - dimension: id
     primary_key: true
     type: string
@@ -9,7 +11,8 @@
 
   - dimension: amount_due
     type: number
-    sql: ${TABLE}.amount_due
+    sql: ${TABLE}.amount_due/100.0
+    value_format: '$#,##0.00'
 
   - dimension: attempt_count
     type: number
@@ -92,6 +95,13 @@
     timeframes: [time, date, week, month]
     sql: ${TABLE}.webhooks_delivered_at
 
+## Measures
+
+  - measure: total_amount_due
+    type: sum
+    sql: ${amount_due}
+    value_format: '$#,##0.00'
+
   - measure: count
     type: count
     drill_fields: detail*
@@ -102,8 +112,9 @@
     detail:
     - id
     - charges.id
-    - customers.id
     - subscriptions.id
-    - charges.count
+    - charges.created_date
+    - customers.id
+    - customers.email
     - invoice_items.count
 
