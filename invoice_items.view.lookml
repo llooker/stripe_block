@@ -67,6 +67,13 @@
     type: count
     drill_fields: detail*
 
+### Custom Fields:
+
+  - measure: total_amount
+    type: sum
+    sql: ${TABLE}.amount
+    value_format: '$#,##0.00'
+
 
   # ----- Sets of fields for drilling ------
   sets:

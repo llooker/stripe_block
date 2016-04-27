@@ -12,7 +12,7 @@
   - dimension: amount_due
     type: number
     sql: ${TABLE}.amount_due/100.0
-    value_format: '$#,##0.00'
+    value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
 
   - dimension: attempt_count
     type: number
