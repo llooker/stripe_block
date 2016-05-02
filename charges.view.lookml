@@ -76,13 +76,13 @@
   
   - measure: total_gross_amount
     type: sum
-    sql: ${TABLE}.amount
+    sql: ${amount}
     value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
     drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
 
   - measure: total_failed_charges
     type: sum
-    sql: ${TABLE}.amount
+    sql: ${amount}
     value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
     drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
     filters:
@@ -90,7 +90,7 @@
       
   - measure: total_refunds
     type: sum
-    sql: ${TABLE}.amount_refunded
+    sql: ${amount_refunded}
     value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
     drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
       
