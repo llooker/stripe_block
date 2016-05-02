@@ -84,11 +84,13 @@
 
   - dimension: subtotal
     type: number
-    sql: ${TABLE}.subtotal
+    sql: ${TABLE}.subtotal*1.0/100
+    value_format: '$#,##0.00'
 
   - dimension: total
     type: number
-    sql: ${TABLE}.total
+    sql: ${TABLE}.total*1.0/100
+    value_format: '$#,##0.00'
 
   - dimension_group: webhooks_delivered
     type: time
