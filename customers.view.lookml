@@ -28,6 +28,8 @@
   - dimension: email
     type: string
     sql: ${TABLE}.email
+    html: |
+      <a href="/dashboards/20?Customer%20Email={{ value }}">{{ value }}</a>
 
   - dimension_group: received
     type: time
@@ -49,4 +51,7 @@
     - invoice_items.count
     - invoices.count
     - subscriptions.count
+    
+
+
 
