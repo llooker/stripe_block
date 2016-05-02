@@ -10,11 +10,11 @@
 
   - dimension: amount
     type: number
-    sql: ${TABLE}.amount
+    sql: ${TABLE}.amount*1.0/100
 
   - dimension: amount_refunded
     type: number
-    sql: ${TABLE}.amount_refunded
+    sql: ${TABLE}.amount_refunded*1.0/100
 
   - dimension: captured
     type: yesno
