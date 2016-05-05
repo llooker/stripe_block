@@ -29,7 +29,7 @@
     type: string
     sql: ${TABLE}.email
     html: |
-      <a href="/dashboards/20?Customer%20Email={{ value }}">{{ value }}</a>
+      <a href="/dashboards/segment_stripe::customer_lookup?Customer%20Email={{ value }}">{{ value }}</a>
 
   - dimension_group: received
     type: time
@@ -45,6 +45,8 @@
   sets:
     detail:
     - id
+    - customers.email
+    - customers.created_date
     - discounts.id
     - charges.count
     - discounts.count

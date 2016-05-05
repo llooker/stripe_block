@@ -1,10 +1,22 @@
 - dashboard: executive_summary
   title: Executive Summary
-  layout: tile
-  tile_size: 100
+  layout: grid
+  rows:
+    - elements: [add_a_unique_name_1462169894754, add_a_unique_name_1462169986635, add_a_unique_name_1462170018213, add_a_unique_name_1462170265666, add_a_unique_name_1462169944434]
+      height: 200
+    - elements: [add_a_unique_name_1462170071843, add_a_unique_name_1462170103121, add_a_unique_name_1462170131608, add_a_unique_name_1462170158647, add_a_unique_name_1462170192768, add_a_unique_name_1462170234178]
+      height: 200
+    - elements: [add_a_unique_name_1462170298899, add_a_unique_name_1462170478391]
+      height: 400
+    - elements: [add_a_unique_name_1462170327278]
+      height: 400
 
-#  filters:
-
+  filters:
+  - name: charge_date
+    title: "Visit Date"
+    type: date_filter
+    default_value: 90 days ago for 45 days
+    
   elements:
 
   - name: add_a_unique_name_1462169894754
@@ -15,6 +27,8 @@
     measures: [charges.total_gross_amount]
     sorts: [charges.total_gross_amount desc]
     limit: 500
+    listen:
+      charge_date: calendar.cal_date_month
     font_size: small
     value_format: ''
     text_color: black
@@ -24,6 +38,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.total_failed_charges]
     sorts: [charges.total_failed_charges desc]
     limit: 500
@@ -36,6 +52,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.total_refunds]
     sorts: [charges.total_refunds desc]
     limit: 500
@@ -48,6 +66,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.total_net_amount]
     sorts: [charges.total_net_amount desc]
     limit: 500
@@ -60,6 +80,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.charge_count]
     sorts: [charges.charge_count desc]
     limit: 500
@@ -72,6 +94,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.charge_count]
     filters:
       charges.status: failed
@@ -86,6 +110,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.refund_count]
     sorts: [charges.refund_count desc]
     limit: 500
@@ -97,6 +123,8 @@
     title: Total Unpaid Invoices Count
     type: single_value
     model: segment_stripe
+    listen:
+      charge_date: calendar.cal_date_month
     explore: calendar
     measures: [invoices.count]
     filters:
@@ -112,6 +140,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [invoices.total_amount_due]
     filters:
       invoices.paid: 'No'
@@ -126,6 +156,8 @@
     type: single_value
     model: segment_stripe
     explore: customer
+    listen:
+      charge_date: customers.created_date
     measures: [customers.count]
     sorts: [customers.count desc]
     limit: 500
@@ -137,6 +169,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.avg_days_until_received]
     sorts: [charges.outstanding_charge_time desc, charges.avg_days_until_received desc]
     limit: 500
@@ -151,10 +185,11 @@
     dimensions: [charges.status]
     measures: [charges.charge_count]
     filters:
-      charges.created_date: 90 days
       charges.status: -NULL
     sorts: [invoices.total_amount_due desc]
     limit: 500
+    listen:
+      charge_date: calendar.cal_date_month
     column_limit: 50
     value_labels: labels
     label_type: labPer
@@ -181,8 +216,8 @@
       expression: -1 * ${charges.total_refunds}
       value_format_name: usd
     hidden_fields: [charges.total_net_amount, charges.total_failed_charges, charges.total_refunds]
-    filters:
-      calendar.cal_date_month: 90 days ago for 45 days
+    listen:
+      charge_date: calendar.cal_date_month
     sorts: [calendar.cal_date_date]
     limit: 500
     stacking: ''
@@ -214,8 +249,8 @@
     explore: calendar
     dimensions: [calendar.cal_date_date]
     measures: [charges.total_net_amount, charges.charge_count]
-    filters:
-      calendar.cal_date_month: 90 days ago for 45 days
+    listen:
+      charge_date: calendar.cal_date_month
     sorts: [calendar.cal_date_date]
     limit: 500
     stacking: ''

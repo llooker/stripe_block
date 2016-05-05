@@ -75,18 +75,19 @@
     type: avg
     sql: ${days_until_received}
     value_format: '#0.00'
+    drill_fields: detail*
   
   - measure: total_gross_amount
     type: sum
     sql: ${amount}
     value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
-    drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
+    drill_fields: detail*
 
   - measure: total_failed_charges
     type: sum
     sql: ${amount}
     value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
-    drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
+    drill_fields: detail*
     filters:
       status: 'failed'
       
@@ -94,13 +95,13 @@
     type: sum
     sql: ${amount_refunded}
     value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
-    drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
+    drill_fields: detail*
       
   - measure: total_net_amount
     type: number
     sql: ${total_gross_amount} - ${total_refunds} - ${total_failed_charges}
     value_format: '[>=1000000]$0.00,,"M";[>=1000]$0.00,"K";$0.00'
-    drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
+    drill_fields: detail*
 
   - measure: cumulative_gross
     type: running_total
@@ -124,10 +125,29 @@
 
   - measure: charge_count
     type: count
-    drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
+    drill_fields: detail*
 
   - measure: refund_count
     type: count
     drill_fields: [id, customers.id, invoices.id, invoices.count, refunds.count]
     filters:
       refunded: 'Yes'
+
+
+
+  # ----- Sets of fields for drilling ------
+  sets:
+    detail:
+      - id
+      - captured
+      - amount
+      - amount_refunded
+      - currency
+      - paid
+      - invoice_id
+      - failure_code
+      - received
+      - created_time
+      - customers.email
+
+

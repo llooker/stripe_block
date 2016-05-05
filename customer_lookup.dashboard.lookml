@@ -1,9 +1,26 @@
 - dashboard: customer_lookup
   title: Customer Lookup
-  layout: tile
-  tile_size: 100
+  layout: grid
+  rows:
+    - elements: [add_a_unique_name_1462199859857,add_a_unique_name_1462199864893,add_a_unique_name_1462199867389]
+      height: 200
+    - elements: [add_a_unique_name_1462199869537, add_a_unique_name_1462199871781, add_a_unique_name_1462199873959 ]
+      height: 200
+    - elements: [add_a_unique_name_1462199876088, add_a_unique_name_1462199878233]
+      height: 200
+    - elements: [add_a_unique_name_1462199880688]
+      height: 400
+    - elements: [add_a_unique_name_1462199883129]
+      height: 400
 
-#  filters:
+  filters:
+
+  - name: customer_email
+    title: "Customer Email"
+    type: field_filter
+    explore: customer
+    field: customers.email
+    default_value: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com 
 
   elements:
 
@@ -12,9 +29,9 @@
     type: looker_single_record
     model: segment_stripe
     explore: customer
+    listen:
+      customer_email: customers.email
     dimensions: [customers.email, customers.created_date, customers.delinquent, customers.currency]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [customers.email]
     limit: 1
     show_view_names: false
@@ -24,9 +41,9 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      customer_email: customers.email
     measures: [charges.total_gross_amount]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [charges.total_gross_amount desc]
     limit: 500
     font_size: small
@@ -37,10 +54,10 @@
     title: Total Net Charges
     type: single_value
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     measures: [charges.total_net_amount]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [charges.total_net_amount desc]
     limit: 500
     font_size: small
@@ -51,10 +68,10 @@
     title: Total Charges
     type: single_value
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     measures: [charges.charge_count]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [charges.charge_count desc]
     limit: 500
     font_size: small
@@ -65,10 +82,10 @@
     title: Total Refund Count
     type: single_value
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     measures: [charges.refund_count]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [charges.refund_count desc]
     limit: 500
     font_size: small
@@ -79,11 +96,12 @@
     title: Total Failed Charges Count
     type: single_value
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     measures: [charges.charge_count]
     filters:
       charges.status: failed
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [charges.charge_count desc]
     limit: 500
     font_size: small
@@ -94,10 +112,10 @@
     title: Total Failed Charges
     type: single_value
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     measures: [charges.total_failed_charges]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [charges.total_failed_charges desc]
     limit: 500
     font_size: small
@@ -108,10 +126,10 @@
     title: Total Refunded Charges
     type: single_value
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     measures: [charges.total_refunds]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [charges.total_refunds desc]
     limit: 500
     font_size: small
@@ -122,11 +140,11 @@
     title: Customer Invoices
     type: table
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     dimensions: [invoices.id, invoices.date_date, invoices.closed, invoices.paid, invoices.attempt_count]
     measures: [invoices.total_amount_due]
-    filters:
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [invoices.paid, invoices.date_date]
     limit: 500
     show_view_names: false
@@ -139,12 +157,11 @@
     title: Charges Over Time
     type: looker_column
     model: segment_stripe
+    listen:
+      customer_email: customers.email
     explore: calendar
     dimensions: [calendar.cal_date_date]
     measures: [charges.total_net_amount, charges.charge_count]
-    filters:
-      calendar.cal_date_month: 90 days ago for 45 days
-      customers.email: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com
     sorts: [calendar.cal_date_date]
     limit: 500
     stacking: ''

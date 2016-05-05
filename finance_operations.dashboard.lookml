@@ -1,9 +1,27 @@
 - dashboard: finance_operations
   title: Finance Operations
-  layout: tile
-  tile_size: 100
+  layout: grid
+  rows:
+    - elements: [add_a_unique_name_1462199027307, add_a_unique_name_1462199030365, add_a_unique_name_1462199034110]
+      height: 200
+    - elements: [add_a_unique_name_1462199022945]
+      height: 400
+    - elements: [add_a_unique_name_1462199037544, add_a_unique_name_1462199046966, add_a_unique_name_1462199049740, add_a_unique_name_1462199071518, add_a_unique_name_1462199076746]
+      height: 200
+    - elements: [add_a_unique_name_1462199080404]
+      height: 400
+    - elements: [add_a_unique_name_1462199084068 ,add_a_unique_name_1462199093780]
+      height: 400
+    - elements: [add_a_unique_name_1462199096968]
+      height: 400
+    - elements: [add_a_unique_name_1462199100492]
+      height: 400
 
-#  filters:
+  filters:
+  - name: charge_date
+    title: "Visit Date"
+    type: date_filter
+    default_value: 90 days ago for 45 days
 
   elements:
 
@@ -17,6 +35,8 @@
     filters:
       charges.failure_code: -NULL
       charges.status: failed
+    listen:
+      charge_date: calendar.cal_date_month
     sorts: [charges.charge_count desc]
     limit: 500
     column_limit: 50
@@ -44,6 +64,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.charge_count]
     sorts: [charges.charge_count desc]
     limit: 500
@@ -56,6 +78,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.charge_count]
     filters:
       charges.status: failed
@@ -69,6 +93,8 @@
     title: Total Refund Count
     type: single_value
     model: segment_stripe
+    listen:
+      charge_date: calendar.cal_date_month
     explore: calendar
     measures: [charges.refund_count]
     sorts: [charges.refund_count desc]
@@ -82,6 +108,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.total_gross_amount]
     sorts: [charges.total_gross_amount desc]
     limit: 500
@@ -94,6 +122,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.total_failed_charges]
     sorts: [charges.total_failed_charges desc]
     limit: 500
@@ -106,6 +136,8 @@
     type: single_value
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     measures: [charges.total_net_amount]
     sorts: [charges.total_net_amount desc]
     limit: 500
@@ -116,6 +148,8 @@
   - name: add_a_unique_name_1462199071518
     title: Delinquent Customer Count
     type: single_value
+    listen:
+      charge_date: calendar.cal_date_month
     model: segment_stripe
     explore: calendar
     measures: [customers.count]
@@ -131,6 +165,8 @@
     title: Average Days to Payment Received
     type: single_value
     model: segment_stripe
+    listen:
+      charge_date: calendar.cal_date_month
     explore: calendar
     measures: [charges.avg_days_until_received]
     sorts: [charges.outstanding_charge_time desc, charges.avg_days_until_received desc]
@@ -143,6 +179,8 @@
     type: looker_column
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     dimensions: [invoices.attempt_count]
     measures: [invoices.count]
     filters:
@@ -175,6 +213,8 @@
     type: table
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     dimensions: [customers.email]
     measures: [invoices.total_amount_due]
     filters:
@@ -199,6 +239,8 @@
     measures: [charges.total_net_amount]
     filters:
       customers.email: -NULL
+    listen:
+      charge_date: calendar.cal_date_month
     sorts: [charges.total_net_amount desc]
     limit: 500
     column_limit: 50
@@ -213,10 +255,10 @@
     type: looker_line
     model: segment_stripe
     explore: calendar
+    listen:
+      charge_date: calendar.cal_date_month
     dimensions: [calendar.cal_date_date]
     measures: [charges.avg_days_until_received]
-    filters:
-      calendar.cal_date_month: 90 days ago for 45 days
     sorts: [calendar.cal_date_date desc]
     limit: 500
     column_limit: 50
@@ -257,9 +299,9 @@
       label: Refunds
       expression: -1 * ${charges.total_refunds}
       value_format_name: usd
+    listen:
+      charge_date: calendar.cal_date_month
     hidden_fields: [charges.total_net_amount, charges.total_failed_charges, charges.total_refunds]
-    filters:
-      calendar.cal_date_month: 90 days ago for 45 days
     sorts: [calendar.cal_date_date]
     limit: 500
     stacking: ''

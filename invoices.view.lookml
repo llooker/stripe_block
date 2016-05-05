@@ -8,6 +8,8 @@
     primary_key: true
     type: string
     sql: ${TABLE}.id
+    html: |
+      <a href="/dashboards/segment_stripe::invoice_lookup?invoice_id={{ value }}">{{ value }}</a>
 
   - dimension: amount_due
     type: number

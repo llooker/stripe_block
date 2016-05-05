@@ -1,10 +1,23 @@
 - dashboard: invoice_lookup
   title: Invoice Lookup
-  layout: tile
-  tile_size: 100
+  layout: grid
+  rows:
+    - elements: [add_a_unique_name_1462219740461, add_a_unique_name_1462219746929, add_a_unique_name_1462219744885]
+      height: 200
+    - elements: [add_a_unique_name_1462219749096, add_a_unique_name_1462219750792, add_a_unique_name_1462219752421, add_a_unique_name_1462219754125, add_a_unique_name_1462219755769]
+      height: 200
+    - elements: [add_a_unique_name_1462219742897]
+      height: 500
 
-#  filters:
+  filters:
 
+  - name: invoice_id
+    title: "Invoice ID"
+    type: field_filter
+    explore: calendar
+    field: invoices.id
+    default_value: in^_80bEWMNEErTWfo
+    
   elements:
 
   - name: add_a_unique_name_1462219740461
@@ -14,8 +27,8 @@
     explore: calendar
     dimensions: [customers.email, invoices.total, invoices.amount_due, charges.currency,
       invoices.paid, invoices.attempted, invoices.closed, invoices.attempt_count, invoices.ending_balance]
-    filters:
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [customers.email, invoices.total]
     limit: 500
     column_limit: 50
@@ -30,8 +43,8 @@
       charges.currency, charges.paid, charges.days_until_received, charges.status, charges.refunded]
     measures: [charges.total_gross_amount, charges.total_refunds, charges.total_failed_charges,
       charges.total_net_amount]
-    filters:
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [charges.created_date desc]
     limit: 500
   
@@ -41,8 +54,8 @@
     model: segment_stripe
     explore: calendar
     measures: [charges.total_net_amount]
-    filters:
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [charges.total_net_amount desc]
     limit: 500
     font_size: small
@@ -55,8 +68,8 @@
     model: segment_stripe
     explore: calendar
     measures: [charges.total_gross_amount]
-    filters:
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [charges.total_gross_amount desc]
     limit: 500
     font_size: small
@@ -71,7 +84,8 @@
     measures: [charges.charge_count]
     filters:
       charges.status: failed
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [charges.charge_count desc]
     limit: 500
     font_size: small
@@ -85,8 +99,9 @@
     explore: calendar
     measures: [invoices.total_amount_due]
     filters:
-      invoices.id: in^_80bEWMNEErTWfo
       invoices.paid: 'No'
+    listen:
+      invoice_id: invoices.id
     sorts: [invoices.total_amount_due desc]
     limit: 500
     font_size: small
@@ -99,8 +114,8 @@
     model: segment_stripe
     explore: calendar
     measures: [charges.avg_days_until_received]
-    filters:
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [charges.outstanding_charge_time desc, charges.avg_days_until_received desc]
     limit: 500
     font_size: small
@@ -112,8 +127,8 @@
     model: segment_stripe
     explore: calendar
     measures: [charges.charge_count]
-    filters:
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [charges.charge_count desc]
     limit: 500
     font_size: small
@@ -126,8 +141,8 @@
     model: segment_stripe
     explore: calendar
     measures: [charges.total_failed_charges]
-    filters:
-      invoices.id: in^_80bEWMNEErTWfo
+    listen:
+      invoice_id: invoices.id
     sorts: [charges.total_failed_charges desc]
     limit: 500
     font_size: small
