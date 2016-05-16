@@ -21,7 +21,7 @@
   - name: charge_date
     title: "Visit Date"
     type: date_filter
-    default_value: 90 days ago for 45 days
+    default_value: 90 days ago for 45 days #change default filter value
 
   elements:
 

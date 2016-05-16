@@ -20,7 +20,7 @@
     type: field_filter
     explore: customer
     field: customers.email
-    default_value: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com 
+    default_value: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com # change filter value if applicable 
 
   elements:
 

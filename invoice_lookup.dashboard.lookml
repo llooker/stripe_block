@@ -16,7 +16,7 @@
     type: field_filter
     explore: calendar
     field: invoices.id
-    default_value: in^_80bEWMNEErTWfo
+    default_value: in^_80bEWMNEErTWfo #change the default filter value
     
   elements:
 
