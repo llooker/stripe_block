@@ -16,7 +16,7 @@
     title: "Visit Date"
     type: date_filter
     default_value: 90 days ago for 45 days # change default filter value
-    
+
   elements:
 
   - name: add_a_unique_name_1462169894754
@@ -32,7 +32,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462169944434
     title: Total Failed Charges
     type: single_value
@@ -46,7 +46,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462169986635
     title: Total Refunded Charges
     type: single_value
@@ -60,7 +60,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462170018213
     title: Total Net Charges
     type: single_value
@@ -74,7 +74,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462170071843
     title: Total Charges
     type: single_value
@@ -88,7 +88,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462170103121
     title: Total Failed Charges Count
     type: single_value
@@ -104,7 +104,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462170131608
     title: Total Refunded Count
     type: single_value
@@ -118,7 +118,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462170158647
     title: Total Unpaid Invoices Count
     type: single_value
@@ -134,7 +134,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462170192768
     title: Total Unpaid Invoices Amount
     type: single_value
@@ -150,7 +150,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462170234178
     title: Total New Customers
     type: single_value
@@ -163,7 +163,7 @@
     limit: 500
     font_size: small
     text_color: '#49719a'
-  
+
   - name: add_a_unique_name_1462170265666
     title: Average Days to Payment Received
     type: single_value
@@ -176,7 +176,7 @@
     limit: 500
     font_size: small
     text_color: black
-  
+
   - name: add_a_unique_name_1462170298899
     title: Charge Status
     type: looker_pie
@@ -197,7 +197,7 @@
       '#c5c6a6', '#82c2ca', '#cee0a0', '#928fb4', '#9fc190']
     inner_radius: 50
     show_view_names: false
-  
+
   - name: add_a_unique_name_1462170327278
     title: Gross Charges vs Failures/Refunds Over Time
     type: looker_column
@@ -275,7 +275,3 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     show_null_labels: false
-
-
-
-

@@ -20,7 +20,7 @@
     type: field_filter
     explore: customer
     field: customers.email
-    default_value: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com # change filter value if applicable 
+    default_value: 8624702d9c382858919e0b9005e85b64cfa2bc92@gmail.com # change filter value if applicable
 
   elements:
 
@@ -35,7 +35,7 @@
     sorts: [customers.email]
     limit: 1
     show_view_names: false
-  
+
   - name: add_a_unique_name_1462199864893
     title: Total Gross Charges
     type: single_value
@@ -49,7 +49,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199867389
     title: Total Net Charges
     type: single_value
@@ -63,7 +63,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199869537
     title: Total Charges
     type: single_value
@@ -77,7 +77,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199871781
     title: Total Refund Count
     type: single_value
@@ -91,7 +91,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199873959
     title: Total Failed Charges Count
     type: single_value
@@ -107,7 +107,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199876088
     title: Total Failed Charges
     type: single_value
@@ -121,7 +121,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199878233
     title: Total Refunded Charges
     type: single_value
@@ -135,7 +135,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199880688
     title: Customer Invoices
     type: table
@@ -152,7 +152,7 @@
     truncate_column_names: false
     table_theme: white
     limit_displayed_rows: false
-  
+
   - name: add_a_unique_name_1462199883129
     title: Charges Over Time
     type: looker_column
@@ -186,7 +186,3 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     show_null_labels: false
-
-
-
-

@@ -17,7 +17,7 @@
     explore: calendar
     field: invoices.id
     default_value: in^_80bEWMNEErTWfo #change the default filter value
-    
+
   elements:
 
   - name: add_a_unique_name_1462219740461
@@ -33,7 +33,7 @@
     limit: 500
     column_limit: 50
     show_view_names: false
-  
+
   - name: add_a_unique_name_1462219742897
     title: Invoice Charges
     type: table
@@ -47,7 +47,7 @@
       invoice_id: invoices.id
     sorts: [charges.created_date desc]
     limit: 500
-  
+
   - name: add_a_unique_name_1462219744885
     title: Total Net Charges
     type: single_value
@@ -61,7 +61,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462219746929
     title: Total Gross Charges
     type: single_value
@@ -75,7 +75,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462219749096
     title: Total Failed Charges Amount
     type: single_value
@@ -91,7 +91,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462219750792
     title: Total Unpaid Invoices Amount
     type: single_value
@@ -107,7 +107,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462219752421
     title: Average Days Until Payment Received
     type: single_value
@@ -120,7 +120,7 @@
     limit: 500
     font_size: small
     text_color: black
-  
+
   - name: add_a_unique_name_1462219754125
     title: Total Charges
     type: single_value
@@ -134,7 +134,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462219755769
     title: Total Failed Charges
     type: single_value
@@ -148,5 +148,3 @@
     font_size: small
     value_format: ''
     text_color: black
-
-

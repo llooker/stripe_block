@@ -58,7 +58,7 @@
     x_axis_scale: auto
     y_axis_scale_mode: linear
     show_null_labels: false
-  
+
   - name: add_a_unique_name_1462199027307
     title: Total Charges
     type: single_value
@@ -72,7 +72,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199030365
     title: Total Failed Charges Amount
     type: single_value
@@ -88,7 +88,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199034110
     title: Total Refund Count
     type: single_value
@@ -102,7 +102,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199037544
     title: Total Gross Charges
     type: single_value
@@ -116,7 +116,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199046966
     title: Total Failed Charges
     type: single_value
@@ -130,7 +130,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199049740
     title: Total Net Charges
     type: single_value
@@ -144,7 +144,7 @@
     font_size: small
     value_format: ''
     text_color: black
-  
+
   - name: add_a_unique_name_1462199071518
     title: Delinquent Customer Count
     type: single_value
@@ -160,7 +160,7 @@
     column_limit: 50
     font_size: small
     text_color: '#49719a'
-  
+
   - name: add_a_unique_name_1462199076746
     title: Average Days to Payment Received
     type: single_value
@@ -173,7 +173,7 @@
     limit: 500
     font_size: small
     text_color: black
-  
+
   - name: add_a_unique_name_1462199080404
     title: Invoice Attempt Count
     type: looker_column
@@ -207,7 +207,7 @@
     x_axis_scale: ordinal
     y_axis_scale_mode: log
     show_null_labels: false
-  
+
   - name: add_a_unique_name_1462199084068
     title: Customers with Unpaid Invoices
     type: table
@@ -229,7 +229,7 @@
     truncate_column_names: false
     table_theme: editable
     limit_displayed_rows: false
-  
+
   - name: add_a_unique_name_1462199093780
     title: Top Customers by Total Spend
     type: table
@@ -249,7 +249,7 @@
     truncate_column_names: false
     table_theme: editable
     limit_displayed_rows: false
-  
+
   - name: add_a_unique_name_1462199096968
     title: Payment Received Time by Charge Date
     type: looker_line
@@ -281,7 +281,7 @@
     show_null_points: false
     point_style: none
     interpolation: monotone
-  
+
   - name: add_a_unique_name_1462199100492
     title: Gross Charges vs Failures/Refunds Over Time
     type: looker_column
@@ -325,5 +325,3 @@
     x_axis_scale: time
     y_axis_scale_mode: linear
     show_null_labels: false
-
-
